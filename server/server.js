@@ -39,7 +39,6 @@ app.post('/pusher/auth', (req, res) => {
 	let auth = pusher.authenticate(socketId, channel, presenceData);
 	res.send(auth);
 });
-
 app.post('/update-location', (req, res) => {
 	// trigger a new post event via pusher
 	pusher.trigger('presence-channel', 'location-update', {
