@@ -1,68 +1,42 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Safe-adelphia
 
-## Available Scripts
+Web app for a group of ***alelphoi***-like-friends in Philly to check in on each other's locations. The app also keeps track of your own location in real-time and notifies you if you enter an unsafe part of town.
 
-In the project directory, you can run:
+## Setup
 
-### `npm start`
+Clone the repository and install dependencies by using the following command from the cloned directory:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+npm install
+```
+[Create an account](https://dashboard.pusher.com/accounts/sign_up) at Pusher, then create a Channels app. Go to the "Keys" page for that app, and make a note of your app_id, key, secret and cluster. A [Google Maps API key](https://developers.google.com/maps/documentation/javascript/get-api-key) will also be required.
+Dump the above keys into a .env file in the following format:
+```text
+REACT_APP_PUSHER_CLUSTER=<>
+REACT_APP_GMAPS_KEY=<>
+REACT_APP_PUSHER_KEY=<>
+REACT_APP_PUSHER_APP_ID=<>
+REACT_APP_PUSHER_SECRET=<>
+REACT_APP_USERNAME=<your name / alias>
+``` 
+Save a copy of the above .env file in both the cloned repository root and the server directory. 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Run the app on localhost using the following command from the project root directory:
 
-### `npm test`
+```bash
+npm start
+```
+Also run the backend server by using the following command from the server directory:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+node server.js
+```
+## Features
 
-### `npm run build`
+* Shows live location and names of friends on the map who are using the app and have subscribed to the same Pusher channel
+* On-screen notification when a friend enters and starts sharing the location or exits their app and stops sharing the location
+* Slack message / email / On-screen notification (as set) as soon as the user enters a shady/unsafe area of the city 
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## In Progress
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* Getting factual and authentic heat map of crime in Philadelphia and setting unsafe area coordinates accordingly
