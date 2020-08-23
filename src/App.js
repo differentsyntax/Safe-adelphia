@@ -11,7 +11,7 @@ const mapStyles = {
 }
 
 const markerStyle = {
-  height: '50px',
+  height: '30px',
   width: '50px',
   marginTop: '-50px'
 }
@@ -52,7 +52,7 @@ class App extends Component {
         current_user: members.myID
       });
       this.getLocation();
-      this.notify();
+      this.notifyNewFriend();
     })
 
     this.presenceChannel.bind('location-update', body => {
@@ -72,14 +72,14 @@ class App extends Component {
         delete newState.users_online[`${member.id}`];
         return newState;
       })
-      this.notify()
+      this.notifyNewFriend()
     })
 
     this.presenceChannel.bind('pusher:member_added', member => {
-      this.notify();
+      this.notifyNewFriend();
     })
   }  
-  notify = () => toast(`Users online : ${Object.keys(this.state.users_online).length}`, {
+  notifyNewFriend = () => toast(`Users online : ${Object.keys(this.state.users_online).length}`, {
     position: "top-right",
     autoClose: 3000,
     hideProgressBar: false,
@@ -105,6 +105,7 @@ class App extends Component {
         }).then(res => {
           if (res.status === 200) {
             console.log("new location updated successfully");
+            console.log(location.lat);
           }
         });
       })
@@ -117,7 +118,7 @@ class App extends Component {
       return (
         <Marker
           key={id}
-          title={`${username === this.state.current_user ? 'My location' : username + "'s location"}`}
+          title={`${username === this.state.current_user ? 'Me' : username + "'s location"}`}
           lat={this.state.locations[`${username}`].lat}
           lng={this.state.locations[`${username}`].lng}
         >
