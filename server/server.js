@@ -30,7 +30,6 @@ app.use((req, res, next) => {
 app.post('/pusher/auth', (req, res) => {
 	let socketId = req.body.socket_id;
 	let channel = req.body.channel_name;
-	// random_string = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
 	let presenceData = {
 			user_id: process.env.REACT_APP_USERNAME,
 			user_info: {
