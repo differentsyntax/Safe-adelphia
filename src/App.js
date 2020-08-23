@@ -40,9 +40,9 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    let pusher = new Pusher('<pusher app key>', {
+    let pusher = new Pusher(process.env.REACT_APP_PUSHER_KEY, {
       authEndpoint: "http://localhost:3128/pusher/auth",
-      cluster: "<pusher cluster>"
+      cluster: process.env.REACT_APP_PUSHER_CLUSTER
     })
     this.presenceChannel = pusher.subscribe('presence-channel');
 
@@ -129,7 +129,7 @@ class App extends Component {
       <div >
         <GoogleMap
           style={mapStyles}
-          bootstrapURLKeys={{ key: 'GMaps API Key' }}
+          bootstrapURLKeys={{ key: process.env.REACT_APP_GMAPS_KEY }}
           center={this.state.center}
           zoom={14}
         >

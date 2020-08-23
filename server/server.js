@@ -1,16 +1,17 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const Pusher = require('pusher');
+require('dotenv').config()
 
 // create a express application
 const app = express();
 
 // initialize pusher
 let pusher = new Pusher({
-	appId: '',
-	key: '',
-	secret: '',
-	cluster: '',
+	appId: process.env.REACT_APP_PUSHER_APP_ID,
+	key: process.env.REACT_APP_PUSHER_KEY,
+	secret: process.env.REACT_APP_PUSHER_SECRET,
+	cluster: process.env.REACT_APP_PUSHER_CLUSTER,
 	useTLS: true
 });
 
@@ -39,6 +40,7 @@ app.post('/pusher/auth', (req, res) => {
 	let auth = pusher.authenticate(socketId, channel, presenceData);
 	res.send(auth);
 });
+
 app.post('/update-location', (req, res) => {
 	// trigger a new post event via pusher
 	pusher.trigger('presence-channel', 'location-update', {
