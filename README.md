@@ -1,6 +1,6 @@
 # Safe-adelphia
 
-Web app for a group of ***alelphoi***-like-friends in Philly to check in on each other's locations. The app also keeps track of your own location in real-time and notifies you if you enter an unsafe part of town.
+Web app for a group of ***alelphoi***-like-friends in Philly to check in on each other's locations. The app also keeps track of your own location in real-time and notifies you if you enter an unsafe part of town. Built out of care for my pals using React, Axios, Pusher and Google Maps.
 
 ## Setup
 
@@ -33,7 +33,7 @@ node server.js
 ```
 ## Features
 
-* Shows live location and names of friends on the map who are using the app and have subscribed to the same Pusher channel
+* Shows the live location and names of friends on the map who are using the app and have subscribed to the same Pusher channel
 * On-screen notification when a friend enters and starts sharing the location or exits their app and stops sharing the location
 * Slack message / email / On-screen notification (as set) as soon as the user enters a shady/unsafe area of the city 
 
